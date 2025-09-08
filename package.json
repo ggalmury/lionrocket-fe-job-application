@@ -1,0 +1,12 @@
+{
+  "name": "lionrocket-fe-job-application",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k --names \"backend,frontend\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm --prefix backend run start:dev",
+    "dev:frontend": "npm --prefix frontend run dev"
+  }
+}
