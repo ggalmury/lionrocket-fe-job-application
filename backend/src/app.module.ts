@@ -14,6 +14,7 @@ import CryptoModule from "@/crypto/crypto.module";
 import AuthModule from "@/domains/auth/auth.module";
 import MemberModule from "@/domains/member/member.module";
 import AiCharacterModule from "@/domains/ai-character/ai-character.module";
+import AiChatModule from "@/domains/ai-chat/ai-chat.module";
 import AppController from "@/app.controller";
 
 @Module({
@@ -48,6 +49,7 @@ import AppController from "@/app.controller";
     AuthModule,
     MemberModule,
     AiCharacterModule,
+    AiChatModule,
   ],
   controllers: [AppController],
 })

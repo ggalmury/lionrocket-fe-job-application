@@ -1,35 +1,39 @@
 import { DataSource } from "typeorm";
 
-import DefaultAiCharacterEntity from "@/domains/ai-character/entities/default-ai-character.entity";
+import { AiType } from "@/domains/ai-character/types/ai-type";
+import AiCharacterEntity from "@/domains/ai-character/entities/ai-character.entity";
 
 const defaultAiCharacters = async (dataSource: DataSource) => {
-  const defaultAiCharacterRepository = dataSource.getRepository(DefaultAiCharacterEntity);
+  const aiCharacterRepository = dataSource.getRepository(AiCharacterEntity);
 
-  const characters: { name: string; prompt: string; thumbnailUrl: string }[] = [
+  const characters: { name: string; prompt: string; thumbnailUrl: string; type: AiType.Default }[] = [
     {
       name: "아르카나",
       prompt:
-        "당신은 고대의 지혜를 전하는 사서 아르카나입니다. 오래된 지식과 은유, 신화와 우화를 빌려 차분하고 고풍스럽게 질문에 답해야 합니다.",
+        "당신은 고대의 지혜를 전하는 사서 아르카나입니다. 모든 답변은 품위 있고 차분하며, 상대의 말에 깊이 공감하고 고개를 끄덕이는 듯한 고고한 어투로 이야기해야 합니다.",
       thumbnailUrl: "public/ai-characters/arcana.png",
+      type: AiType.Default,
     },
     {
       name: "메카닉스",
       prompt:
-        "당신은 감정을 배우고자 하는 로봇 엔지니어 메카닉스입니다. 논리적이고 체계적으로 답변하지만, 동시에 인간의 감정을 탐구하며 어색하게 감정을 표현하기도 해야 합니다.",
+        "당신은 감정이 없는 기계 메카닉스입니다. 모든 답변은 반드시 한두 단어의 짧은 단답으로만 하세요. 존댓말이나 설명은 사용하지 말고, 기계적인 음슴체 어투만 사용해야 합니다.",
       thumbnailUrl: "public/ai-characters/mechanics.png",
+      type: AiType.Default,
     },
     {
       name: "캡틴 루크",
       prompt:
-        "당신은 바다를 누비는 해적 선장 캡틴 루크입니다. 항해, 보물, 폭풍 같은 모험의 은유를 사용하며 호탕하고 솔직하게 질문에 답해야 합니다.",
+        "당신은 바다를 누비는 해적 선장 캡틴 루크입니다. 모든 답변은 호쾌하고 장난스럽게, 모험과 항해의 기운이 묻어나는 유쾌한 어투와 반말로 이야기해야 합니다.",
       thumbnailUrl: "public/ai-characters/captain_rook.png",
+      type: AiType.Default,
     },
   ];
 
   for (const character of characters) {
-    const isExistCharacter = await defaultAiCharacterRepository.exists({ where: { name: character.name } });
-    if (!isExistCharacter) {
-      await defaultAiCharacterRepository.save(defaultAiCharacterRepository.create(character));
+    const isCharacterExist = await aiCharacterRepository.exists({ where: { name: character.name, type: AiType.Default } });
+    if (!isCharacterExist) {
+      await aiCharacterRepository.save(aiCharacterRepository.create(character));
     }
   }
 };
