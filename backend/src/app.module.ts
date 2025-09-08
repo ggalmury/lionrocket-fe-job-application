@@ -9,7 +9,7 @@ import { join } from "path";
 import defaultAiCharacters from "@/seeds/default-ai-characters";
 
 import TypeOrmConfig from "@/config/typeorm.config";
-import RedisModule from "@/cache/redis.module";
+import CacheModule from "@/cache/cache.module";
 import CryptoModule from "@/crypto/crypto.module";
 import AuthModule from "@/domains/auth/auth.module";
 import MemberModule from "@/domains/member/member.module";
@@ -44,7 +44,7 @@ import AppController from "@/app.controller";
       rootPath: join(process.cwd(), "uploads", "ai-characters"),
       serveRoot: "/uploads/ai-characters", // http://localhost:3000/uploads/ai-characters/...
     }),
-    RedisModule.forRoot(),
+    CacheModule.forRoot(),
     CryptoModule,
     AuthModule,
     MemberModule,
