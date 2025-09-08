@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@nestjs/common";
 import Keyv from "keyv";
 
-import { REDIS_INSTANCE } from "@/config/redis.config";
+import { KEYV_INSTANCE } from "@/config/keyv.config";
 
 import ChatContent from "@/domains/ai-chat/types/chat-content";
 
@@ -9,7 +9,7 @@ import ChatContent from "@/domains/ai-chat/types/chat-content";
 export default class AiChatHistoryKeyvRepository {
   private readonly ttlMs: number = 10 * 60 * 1000;
 
-  constructor(@Inject(REDIS_INSTANCE) private readonly cacheManager: Keyv) {}
+  constructor(@Inject(KEYV_INSTANCE) private readonly cacheManager: Keyv) {}
 
   async set(memberId: number, aiCharacterId: number, contents: ChatContent[]): Promise<void> {
     const key = this.key(memberId, aiCharacterId);
