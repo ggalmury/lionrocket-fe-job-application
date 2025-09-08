@@ -8,5 +8,5 @@ export default class MemberEntity extends TypeOrmBaseOrmEntity {
   accountId: string;
 
   @Column({ type: "varchar" })
-  password: string;
+  encryptedPassword: string;
 }
