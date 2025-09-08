@@ -24,10 +24,8 @@ export default class MemberService {
   }
 
   async findByAccount(accountId: string, password: string): Promise<MemberEntity> {
-    const encryptedPassword = await this.cryptoService.hash(password);
-
-    const member = await this.memberRepository.findOneBy({ accountId, encryptedPassword });
-    if (!member) {
+    const member = await this.memberRepository.findOneBy({ accountId });
+    if (!member || !(await this.cryptoService.compare(password, member.encryptedPassword))) {
       throw new NotFoundException(`Member with accountId [${accountId}] not found`);
     }
 
