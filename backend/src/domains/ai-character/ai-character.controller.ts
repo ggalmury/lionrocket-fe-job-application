@@ -8,6 +8,7 @@ import JwtAccessTokenGuard from "@/domains/auth/guards/jwt-access-token.guard";
 import ExtractMemberId from "@/domains/auth/decorators/extract-member-id.decorator";
 
 import { MAX_AI_CHARACTER_THUMBNAIL_SIZE } from "@/domains/ai-character/constants/constraint";
+import { AiType } from "@/domains/ai-character/types/ai-type";
 import AiCharacterService from "@/domains/ai-character/services/ai-character.service";
 import AiCharacterDto from "@/domains/ai-character/dtos/ai-character.dto";
 import CreateAiCharacterReqDto from "@/domains/ai-character/dtos/create-ai-character-req.dto";
@@ -25,14 +26,14 @@ export default class AiCharacterController {
 
     return {
       defaultCharacters: defaultCharacters.map((defaultCharacter) => {
-        const { id, name, prompt, thumbnailUrl } = defaultCharacter;
+        const { id, name, prompt, thumbnailUrl, type } = defaultCharacter;
 
-        return new AiCharacterDto(id, name, prompt, thumbnailUrl);
+        return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
       }),
       customCharacters: customCharacters.map((customCharacter) => {
-        const { id, name, prompt, thumbnailUrl } = customCharacter;
+        const { id, name, prompt, thumbnailUrl, type } = customCharacter;
 
-        return new AiCharacterDto(id, name, prompt, thumbnailUrl);
+        return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
       }),
     };
   }
