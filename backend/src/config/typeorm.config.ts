@@ -12,7 +12,7 @@ export default class TypeOrmConfig implements TypeOrmOptionsFactory {
       type: "sqlite",
       database: this.configService.get<string>("DB_DATABASE", "database.sqlite"),
       synchronize: this.configService.get<boolean>("DB_SYNCHRONIZE", false),
-      entities: [__dirname + "/../../**/*-typeorm.entity{.ts,.js}"],
+      entities: [__dirname + "/../**/*.entity{.ts,.js}"],
       namingStrategy: new SnakeNamingStrategy(),
     };
   }

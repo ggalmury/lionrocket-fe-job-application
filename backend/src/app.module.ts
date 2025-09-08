@@ -6,6 +6,8 @@ import { addTransactionalDataSource } from "typeorm-transactional";
 
 import TypeOrmConfig from "@/config/typeorm.config";
 import RedisModule from "@/cache/redis.module";
+import CryptoModule from "@/crypto/crypto.module";
+import MemberModule from "@/domains/member/member.module";
 import AppController from "@/app.controller";
 
 @Module({
@@ -28,6 +30,8 @@ import AppController from "@/app.controller";
       },
     }),
     RedisModule.forRoot(),
+    CryptoModule,
+    MemberModule,
   ],
   controllers: [AppController],
 })
