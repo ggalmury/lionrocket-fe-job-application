@@ -5,6 +5,7 @@ import { DataSource } from "typeorm";
 import { addTransactionalDataSource } from "typeorm-transactional";
 
 import TypeOrmConfig from "@/config/typeorm.config";
+import RedisModule from "@/cache/redis.module";
 import AppController from "@/app.controller";
 
 @Module({
@@ -26,6 +27,7 @@ import AppController from "@/app.controller";
         return addTransactionalDataSource(datasource);
       },
     }),
+    RedisModule.forRoot(),
   ],
   controllers: [AppController],
 })
