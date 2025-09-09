@@ -4,7 +4,6 @@ import useIsLogin from "@/domains/auth/hooks/useIsLogin";
 
 const RequireAuthPage = () => {
   const { data: isLogin, isLoading } = useIsLogin();
-  console.log(isLogin, isLoading);
 
   if (isLoading) {
     return <div></div>;

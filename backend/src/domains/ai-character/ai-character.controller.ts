@@ -8,12 +8,9 @@ import JwtAccessTokenGuard from "@/domains/auth/guards/jwt-access-token.guard";
 import ExtractMemberId from "@/domains/auth/decorators/extract-member-id.decorator";
 
 import { MAX_AI_CHARACTER_THUMBNAIL_SIZE } from "@/domains/ai-character/constants/constraint";
-import { AiType } from "@/domains/ai-character/types/ai-type";
 import AiCharacterService from "@/domains/ai-character/services/ai-character.service";
 import AiCharacterDto from "@/domains/ai-character/dtos/ai-character.dto";
 import CreateAiCharacterReqDto from "@/domains/ai-character/dtos/create-ai-character-req.dto";
-import AiCharactersResDto from "@/domains/ai-character/dtos/ai-characters-res.dto";
-import CreateAiCharacterResDto from "@/domains/ai-character/dtos/create-ai-character-res.dto";
 
 @Controller("ai-character")
 export default class AiCharacterController {
@@ -21,21 +18,14 @@ export default class AiCharacterController {
 
   @Get()
   @UseGuards(JwtAccessTokenGuard)
-  async getAll(@ExtractMemberId() memberId: number): Promise<AiCharactersResDto> {
-    const { defaultCharacters, customCharacters } = await this.aiCharacterService.getAll(memberId);
+  async getAll(@ExtractMemberId() memberId: number): Promise<AiCharacterDto[]> {
+    const aiCharacters = await this.aiCharacterService.getAll(memberId);
 
-    return {
-      defaultCharacters: defaultCharacters.map((defaultCharacter) => {
-        const { id, name, prompt, thumbnailUrl, type } = defaultCharacter;
+    return aiCharacters.map((aiCharacter) => {
+      const { id, name, prompt, thumbnailUrl, type } = aiCharacter;
 
-        return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
-      }),
-      customCharacters: customCharacters.map((customCharacter) => {
-        const { id, name, prompt, thumbnailUrl, type } = customCharacter;
-
-        return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
-      }),
-    };
+      return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
+    });
   }
 
   @Post()
@@ -53,9 +43,9 @@ export default class AiCharacterController {
     @ExtractMemberId() memberId: number,
     @Body() body: CreateAiCharacterReqDto,
     @UploadedFile() file: Express.Multer.File,
-  ): Promise<CreateAiCharacterResDto> {
-    const { id, name, thumbnailUrl } = await this.aiCharacterService.create(memberId, body, file);
+  ): Promise<AiCharacterDto> {
+    const { id, name, prompt, thumbnailUrl, type } = await this.aiCharacterService.create(memberId, body, file);
 
-    return { id, name, thumbnailUrl };
+    return new AiCharacterDto(id, name, prompt, thumbnailUrl, type);
   }
 }
