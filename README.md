@@ -76,6 +76,8 @@ npm run start:dev
 
 <img src="./assets/chat1.png" alt="chat1" width="50%" />
 <img src="./assets/chat2.png" alt="chat2" width="50%" />
+<img src="./assets/chat3.png" alt="chat3" width="50%" />
+<img src="./assets/chat4.png" alt="chat4" width="50%" />
 
 
 ### 4) 데이터 관리
