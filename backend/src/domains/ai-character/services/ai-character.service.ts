@@ -23,7 +23,7 @@ export default class AiCharacterService {
     return aiCharacter;
   }
 
-  async getAll(memberId: number): Promise<{ defaultCharacters: AiCharacterEntity[]; customCharacters: AiCharacterEntity[] }> {
+  async getAll(memberId: number): Promise<AiCharacterEntity[]> {
     const [defaultCharacters, customCharacters] = await Promise.all([
       this.aiCharacterRepository.find({
         where: { type: "default" as AiType },
@@ -35,7 +35,7 @@ export default class AiCharacterService {
       }),
     ]);
 
-    return { defaultCharacters, customCharacters };
+    return [...defaultCharacters, ...customCharacters];
   }
 
   async create(memberId: number, body: CreateAiCharacterReqDto, file: Express.Multer.File): Promise<AiCharacterEntity> {
