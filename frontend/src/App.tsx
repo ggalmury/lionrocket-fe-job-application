@@ -1,5 +1,11 @@
-const App = () => {
-  return <div>App</div>;
-};
+import Header from "@/components/layouts/Header";
+import Main from "@/components/layouts/Main";
+
+const App = () => (
+  <div className="flex flex-col min-h-screen">
+    <Header />
+    <Main />
+  </div>
+);
 
 export default App;

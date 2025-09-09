@@ -15,6 +15,16 @@
   }
 }
 
+html[data-theme="light"] {
+  --background: var(--background-white);
+  --foreground: var(--foreground-white);
+}
+
+html[data-theme="dark"] {
+  --background: var(--background-dark);
+  --foreground: var(--foreground-dark);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
