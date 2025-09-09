@@ -14,7 +14,10 @@ interface TextInputProps {
 const TextInput = ({ value, name, placeholder, type, maxLength, onChange }: TextInputProps) => {
   return (
     <input
-      className={clsx("h-11 rounded-xl px-3 text-sm border border-gray-300 transition placeholder-gray-400", "focus:border-primary-600")}
+      className={clsx(
+        "w-full h-11 rounded-xl px-3 text-sm border border-gray-300 transition placeholder-gray-400",
+        "focus:border-primary-600",
+      )}
       value={value}
       name={name}
       placeholder={placeholder}

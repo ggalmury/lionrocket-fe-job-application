@@ -7,7 +7,7 @@ import HomePage from "@/pages/HomePage";
 
 const Main = () => {
   return (
-    <main className="flex flex-1">
+    <main className="flex flex-1 min-h-0 overflow-hidden">
       <Routes>
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />

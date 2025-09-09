@@ -7,6 +7,7 @@ import AiCharacterList from "@/components/organisms/ai/AiCharacterList";
 import ChatPanel from "@/components/organisms/ai/ChatPanel";
 import CreateAiCharacterModal from "@/components/organisms/ai/CreateAiCharacterModal";
 import AiCharacterIntroModal from "@/components/organisms/ai/AiCharacterIntroModal";
+import Headline1 from "@/components/atoms/typography/Headline1";
 
 const HomePage = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -35,7 +36,13 @@ const HomePage = () => {
         onCreateClick={() => setIsAiCharacterCreateModalOpen(true)}
       />
 
-      <ChatPanel name={selectedAiCharacter?.name} thumbnailUrl={selectedAiCharacter?.thumbnailUrl} messages={[]} onSend={(text) => {}} />
+      {selectedAiCharacter ? (
+        <ChatPanel aiCharacter={selectedAiCharacter} />
+      ) : (
+        <section className="flex-1 flex justify-center items-center h-full">
+          <Headline1 text="캐릭터를 선택해 주세요." />
+        </section>
+      )}
 
       <CreateAiCharacterModal isOpen={isAiCharacterCreateModalOpen} onClose={() => setIsAiCharacterCreateModalOpen(false)} />
 
