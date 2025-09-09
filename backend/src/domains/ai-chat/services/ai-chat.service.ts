@@ -50,7 +50,7 @@ export default class AiChatService {
 
     const cachedChatHistories = await this.aiChatHistoryKeyvRepository.getAll(memberId, aiCharacterId);
 
-    const system = `당신의 역할: ${aiCharacter.prompt} / 모든 대화는 강조, 이탤릭 등 꾸밈 요소 없이 한 문단의 문자열 평문으로만 제공합니다. AI 어시스턴스로서가 아니라 역할에 충실하며, 기계같이 대화하지 않고 역할에 맞는 응답을 합니다.`;
+    const system = `당신의 역할: ${aiCharacter.prompt}, 당신의 이름: ${aiCharacter.name} / 모든 대화는 강조, 이탤릭 등 꾸밈 요소 없이 한 문단의 문자열 평문으로만 제공합니다. AI 어시스턴스로서가 아니라 역할에 충실하며, 기계같이 대화하지 않고 역할에 맞는 응답을 합니다.`;
     const model = this.configService.getOrThrow<string>("CLAUDE_MODEL");
     const maxTokens = Number(this.configService.getOrThrow<number>("CLAUDE_MAX_TOKENS"));
 

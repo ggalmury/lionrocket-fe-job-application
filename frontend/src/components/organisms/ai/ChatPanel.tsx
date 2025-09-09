@@ -1,20 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import clsx from "clsx";
 
 import { SERVER_URL } from "@/lib/constants/url";
 import { formatDateToYMDHM } from "@/lib/utils/formatter/date";
 
+import { MAX_CHAT_LENGTH } from "@/domains/ai-chat/constants/constraint";
 import useAiChats from "@/domains/ai-chat/hooks/useAiChats";
 import useSendChat from "@/domains/ai-chat/hooks/useSendChat";
 import type { AiCharacter } from "@/domains/ai-character/models/aiCharacter";
 
 import ImageBox from "@/components/atoms/ImageBox";
 import PrimaryButton from "@/components/atoms/button/PrimaryButton";
+import TextInput from "@/components/atoms/input/TextInput";
 import Headline1 from "@/components/atoms/typography/Headline1";
 import Body1 from "@/components/atoms/typography/Body1";
 import Label1 from "@/components/atoms/typography/Label1";
-import clsx from "clsx";
 import Caption1 from "@/components/atoms/typography/Caption1";
-import TextInput from "@/components/atoms/input/TextInput";
 
 interface ChatPanelProps {
   aiCharacter: AiCharacter;
@@ -94,8 +95,8 @@ const ChatPanel = ({ aiCharacter }: ChatPanelProps) => {
       </div>
 
       <div className="flex items-center gap-2 p-4 border-t border-gray-200">
-        <TextInput placeholder="메시지를 입력해 주세요" value={draft} onChange={setDraft} />
-        <PrimaryButton label="전송" styles={{ width: "w-auto", height: "h-11" }} onClick={handleSend} disabled={isPending} />
+        <TextInput placeholder="메시지를 입력해 주세요" value={draft} onChange={setDraft} maxLength={MAX_CHAT_LENGTH} />
+        <PrimaryButton label="전송" styles={{ width: "w-auto", height: "h-11" }} disabled={isPending} onClick={handleSend} />
       </div>
     </section>
   );
