@@ -1,0 +1,154 @@
+@layer base {
+  @theme inline {
+    /* ============ 색상 테마 ============ */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-primary-900: var(--primary-900);
+    --color-primary-800: var(--primary-800);
+    --color-primary-700: var(--primary-700);
+    --color-primary-600: var(--primary-600);
+    --color-primary-500: var(--primary-500);
+    --color-primary-400: var(--primary-400);
+    --color-primary-300: var(--primary-300);
+    --color-primary-200: var(--primary-200);
+    --color-primary-100: var(--primary-100);
+
+    --color-success: var(--success);
+    --color-error: var(--error);
+
+    --color-black: var(--black);
+
+    /* ============ 폰트 패밀리 테마 ============ */
+    --font-sans: var(--geist-sans);
+    --font-mono: var(--geist-mono);
+
+    /* ============ 폰트 크기 테마 ============ */
+    /* Display 1 */
+    --text-display1-lg: var(--display1-lg);
+    --text-display1-md: var(--display1-md);
+    --text-display1-sm: var(--display1-sm);
+
+    /* Display 2 */
+    --text-display2-lg: var(--display2-lg);
+    --text-display2-md: var(--display2-md);
+    --text-display2-sm: var(--display2-sm);
+
+    /* Title 1 */
+    --text-title1-lg: var(--title1-lg);
+    --text-title1-md: var(--title1-md);
+    --text-title1-sm: var(--title1-sm);
+
+    /* Title 2 */
+    --text-title2-lg: var(--title2-lg);
+    --text-title2-md: var(--title2-md);
+    --text-title2-sm: var(--title2-sm);
+
+    /* Title 3 */
+    --text-title3-lg: var(--title3-lg);
+    --text-title3-md: var(--title3-md);
+    --text-title3-sm: var(--title3-sm);
+
+    /* Heading 1 */
+    --text-heading1-lg: var(--heading1-lg);
+    --text-heading1-md: var(--heading1-md);
+    --text-heading1-sm: var(--heading1-sm);
+
+    /* Heading 2 */
+    --text-heading2-lg: var(--heading2-lg);
+    --text-heading2-md: var(--heading2-md);
+    --text-heading2-sm: var(--heading2-sm);
+
+    /* Headline 1 */
+    --text-headline1-lg: var(--headline1-lg);
+    --text-headline1-md: var(--headline1-md);
+    --text-headline1-sm: var(--headline1-sm);
+
+    /* Headline 2 */
+    --text-headline2-lg: var(--headline2-lg);
+    --text-headline2-md: var(--headline2-md);
+    --text-headline2-sm: var(--headline2-sm);
+
+    /* Body 1 */
+    --text-body1: var(--body1);
+
+    /* Body 2 */
+    --text-body2: var(--body2);
+
+    /* Label 1 */
+    --text-label1: var(--label1);
+
+    /* Label 2 */
+    --text-label2: var(--label2);
+
+    /* Caption 1 */
+    --text-caption1: var(--caption1);
+
+    /* Caption 2 */
+    --text-caption2: var(--caption2);
+
+    /* ============ 라인 높이 테마 ============ */
+    /* Display 1 */
+    --leading-display1-lg: calc(var(--display1-lg) * 1.2);
+    --leading-display1-md: calc(var(--display1-md) * 1.2);
+    --leading-display1-sm: calc(var(--display1-sm) * 1.2);
+
+    /* Display 2 */
+    --leading-display2-lg: calc(var(--display2-lg) * 1.3);
+    --leading-display2-md: calc(var(--display2-md) * 1.3);
+    --leading-display2-sm: calc(var(--display2-sm) * 1.3);
+
+    /* Title 1 */
+    --leading-title1-lg: calc(var(--title1-lg) * 1.4);
+    --leading-title1-md: calc(var(--title1-md) * 1.4);
+    --leading-title1-sm: calc(var(--title1-sm) * 1.4);
+
+    /* Title 2 */
+    --leading-title2-lg: calc(var(--title2-lg) * 1.5);
+    --leading-title2-md: calc(var(--title2-md) * 1.5);
+    --leading-title2-sm: calc(var(--title2-sm) * 1.5);
+
+    /* Title 3 */
+    --leading-title3-lg: calc(var(--title3-lg) * 1.5);
+    --leading-title3-md: calc(var(--title3-md) * 1.5);
+    --leading-title3-sm: calc(var(--title3-sm) * 1.5);
+
+    /* Heading 1 */
+    --leading-heading1-lg: calc(var(--heading1-lg) * 1.5);
+    --leading-heading1-md: calc(var(--heading1-md) * 1.5);
+    --leading-heading1-sm: calc(var(--heading1-sm) * 1.5);
+
+    /* Heading 2 */
+    --leading-heading2-lg: calc(var(--heading2-lg) * 1.5);
+    --leading-heading2-md: calc(var(--heading2-md) * 1.5);
+    --leading-heading2-sm: calc(var(--heading2-sm) * 1.5);
+
+    /* Headline 1 */
+    --leading-headline1-lg: calc(var(--headline1-lg) * 1.5);
+    --leading-headline1-md: calc(var(--headline1-md) * 1.5);
+    --leading-headline1-sm: calc(var(--headline1-sm) * 1.5);
+
+    /* Headline 2 */
+    --leading-headline2-lg: calc(var(--headline2-lg) * 1.5);
+    --leading-headline2-md: calc(var(--headline2-md) * 1.5);
+    --leading-headline2-sm: calc(var(--headline2-sm) * 1.5);
+
+    /* Body 1 */
+    --leading-body1: calc(var(--body1) * 1.5);
+
+    /* Body 2 */
+    --leading-body2: calc(var(--body2) * 1.5);
+
+    /* Label 1 */
+    --leading-label1: calc(var(--label1) * 1.5);
+
+    /* Label 2 */
+    --leading-label2: calc(var(--label2) * 1.5);
+
+    /* Caption 1 */
+    --leading-caption1: calc(var(--caption1) * 1.5);
+
+    /* Caption 2 */
+    --leading-caption2: calc(var(--caption2) * 1.5);
+  }
+}
