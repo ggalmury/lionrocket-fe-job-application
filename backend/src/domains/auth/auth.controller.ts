@@ -1,5 +1,6 @@
-import { Controller, HttpCode, Post, Body } from "@nestjs/common";
+import { Controller, UseGuards, HttpCode, Get, Post, Body } from "@nestjs/common";
 
+import JwtAccessTokenGuard from "@/domains/auth/guards/jwt-access-token.guard";
 import AuthService from "@/domains/auth/services/auth.service";
 import SignInReqDto from "@/domains/auth/dtos/sign-in-req.dto";
 import SignUpReqDto from "@/domains/auth/dtos/sign-up-req.dto";
@@ -9,6 +10,13 @@ import SignUpResDto from "@/domains/auth/dtos/sign-up-res.dto";
 @Controller("auth")
 export default class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Get("status")
+  @UseGuards(JwtAccessTokenGuard)
+  @HttpCode(204)
+  async status(): Promise<void> {
+    return;
+  }
 
   @Post("sign-in")
   @HttpCode(200)
