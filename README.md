@@ -47,6 +47,10 @@ npm run start:dev
 - 로그아웃 기능: 구현
 - 비로그인 시 접근 제한: 구현 (보호 라우트로 미로그인 시 리다이렉트)
 
+<img src="./assets/signin.png" alt="signin" width="50%" />
+<img src="./assets/signup.png" alt="signup" width="50%" />
+
+
 ### 2) AI 캐릭터 기능
 
 - 기본 제공 캐릭터 3개: 구현 (서버 시드로 생성)
@@ -57,6 +61,11 @@ npm run start:dev
 - 캐릭터별 독립적 대화 관리: 구현 (캐릭터 ID별 캐시/조회)
 - 캐릭터 선택 UI(썸네일 표시): 구현 (타입 라벨: 기본/커스텀)
 
+<img src="./assets/home.png" alt="home" width="50%" />
+<img src="./assets/createai.png" alt="createai" width="50%" />
+<img src="./assets/aiinfo.png" alt="aiinfo" width="50%" />
+
+
 ### 3) 채팅 기능
 
 - 메시지 송수신: 구현 (훅 연동, 낙관적 UI 적용)
@@ -64,6 +73,10 @@ npm run start:dev
 - 대화 내역 표시: 구현 (좌측/우측 정렬, 하단 정렬)
 - 타임스탬프 표시: 구현 (YYYY-MM-DD HH:mm)
 - 로딩 상태 표시: 구현 (응답 대기 중 로딩 버블)
+
+<img src="./assets/chat1.png" alt="chat1" width="50%" />
+<img src="./assets/chat2.png" alt="chat2" width="50%" />
+
 
 ### 4) 데이터 관리
 
